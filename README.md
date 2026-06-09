@@ -75,6 +75,7 @@ Ikuti langkah-langkah berikut untuk memasang NetAccess Panel di server Anda:
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git curl unzip zip software-properties-common
+```
 
 ### 2. Install PHP, Ekstensi, & Composer
 ```bash
@@ -83,6 +84,7 @@ sudo apt install -y php php-cli php-fpm php-mysql php-mbstring php-xml php-curl 
 # Install Composer
 curl -sS [https://getcomposer.org/installer](https://getcomposer.org/installer) | php
 sudo mv composer.phar /usr/local/bin/composer
+
 
 ### 3. Setup Database (MariaDB)
 ```bash
@@ -98,12 +100,16 @@ CREATE USER 'netaccess'@'localhost' IDENTIFIED BY 'password_database_kamu';
 GRANT ALL PRIVILEGES ON netaccess.* TO 'netaccess'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
+```
 
 ### 4. Install Node.js 20
+```bash
 curl -fsSL [https://deb.nodesource.com/setup_20.x](https://deb.nodesource.com/setup_20.\x) | sudo -E bash -
 sudo apt install -y nodejs
+```
 
 ### 5. Clone Repository & Install Dependency
+```bash
 cd /var/www
 sudo git clone [https://github.com/aidilandriandas/Netaccess-Panel.git](https://github.com/aidilandriandas/Netaccess-Panel.git)
 sudo chown -R $USER:$USER Netaccess-Panel
@@ -112,3 +118,4 @@ cd Netaccess-Panel
 # Install dependensi PHP dan Frontend
 composer install
 npm install
+```
