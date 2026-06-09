@@ -66,3 +66,12 @@ Project ini sangat cocok untuk penyedia layanan internet (ISP), cloud kecil, res
 Pastikan software berikut sudah terpasang: `PHP 8.2+`, `Composer`, `MySQL/MariaDB`, `Node.js 20+ & NPM`, `Git`, `Nginx / Apache`.
 
 Ekstensi PHP yang wajib aktif: `php-cli`, `php-fpm`, `php-mysql`, `php-mbstring`, `php-xml`, `php-curl`, `php-zip`, `php-bcmath`, `php-gd`, `php-tokenizer`, `php-fileinfo`, `php-opcache`
+
+## ⚙️ Panduan Instalasi (Ubuntu Server)
+
+Ikuti langkah-langkah berikut untuk memasang NetAccess Panel di server Anda:
+
+### 1. Update Sistem & Install Package Dasar
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl unzip zip software-properties-common
