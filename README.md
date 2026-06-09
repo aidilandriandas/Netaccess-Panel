@@ -119,3 +119,74 @@ cd Netaccess-Panel
 composer install
 npm install
 ```
+
+### 6. Konfigurasi Environment (.env)
+```bash
+cp .env.example .env
+nano .env
+
+# Sesuaikan bagian konfigurasi database dan URL aplikasi Anda di dalam file .env:
+APP_NAME="NetAccess Panel"
+APP_ENV=production
+APP_KEY=
+APP_DEBUG=false
+APP_URL=[http://domain-kamu.com](http://domain-kamu.com)
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=netaccess
+DB_USERNAME=netaccess
+DB_PASSWORD=password_database_kamu
+
+# Setelah selesai mengedit dan menyimpan file .env, buat application key:
+php artisan key:generate
+```
+
+### 7. Migrasi Database & Folder Permission
+```bash
+# Jalankan migrasi dan seeder
+php artisan migrate --seed
+
+# Hubungkan folder storage
+php artisan storage:link
+
+# Atur hak akses folder agar bisa dibaca oleh web server
+sudo chown -R www-data:www-data /var/www/Netaccess-Panel
+sudo chmod -R 775 /var/www/Netaccess-Panel/storage
+sudo chmod -R 775 /var/www/Netaccess-Panel/bootstrap/cache
+```
+
+🏃 Menjalankan Aplikasi
+💻 Pengembangan (Local Development)
+
+```bash
+# Menjalankan server lokal
+php artisan serve
+
+# Menjalankan Vite (Hot Reload frontend)
+npm run dev
+```
+
+Aplikasi dapat diakses melalui: http://localhost:8000
+
+### 🌐 Produksi (VPS dengan IP Publik)
+```bash
+# Compile aset frontend terlebih dahulu
+npm run build
+
+# Menjalankan server di IP Publik
+php artisan serve --host=0.0.0.0 --port=8000
+```
+Aplikasi dapat diakses melalui: http://IP-SERVER-ANDA:8000
+
+### 🔐 Informasi Login Default
+Setelah proses instalasi dan seeder berhasil dijalankan, Anda dapat masuk menggunakan akun default berikut:
+
+Email: admin@netaccess.local
+
+Password: password
+
+Role: Owner / Admin
+
+⚠️ PENTING: Demi keamanan, segera ubah password default Anda atau buat akun admin baru setelah berhasil masuk ke sistem untuk pertama kalinya.
