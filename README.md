@@ -69,14 +69,19 @@ Ekstensi PHP yang wajib aktif:
 ```text
 php-cli, php-fpm, php-mysql, php-mbstring, php-xml, php-curl, php-zip, php-bcmath, php-gd, php-tokenizer, php-fileinfo, php-opcache
 
+
 ⚙️ Panduan Instalasi (Ubuntu Server)
+
 Ikuti langkah-langkah berikut untuk memasang NetAccess Panel di server Anda:
 
 1. Update Sistem & Install Package Dasar
+
 Bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git curl unzip zip software-properties-common
+
 2. Install PHP, Ekstensi, & Composer
+
 Bash
 sudo apt install -y php php-cli php-fpm php-mysql php-mbstring php-xml php-curl php-zip php-bcmath php-gd php-tokenizer php-fileinfo php-opcache
 
