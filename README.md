@@ -1,135 +1,70 @@
 # NetAccess Panel
 
-Admin panel untuk bisnis layanan VPN WireGuard, monitoring, dan hosting. Dibangun dengan Laravel 13, Tailwind CSS, dan Blade.
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
+  <img src="https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js">
+</p>
 
-## Fitur
+**NetAccess Panel** adalah aplikasi web berbasis Laravel yang dirancang untuk mengelola layanan VPN/L2TP MikroTik, Hosting, VPS, Customer, Order, Invoice, Support Ticket, hingga konfirmasi pembayaran manual.
 
-- **Dashboard** — Statistik customer, VPN, invoice, revenue, server status
-- **Manajemen Customer** — CRUD, search, filter status/tipe
-- **Manajemen Paket** — CRUD paket layanan (VPN, monitoring, hosting, backup, VPS)
-- **VPN WireGuard** — Generate username, IP, keys, config, QR code otomatis
-- **Invoice & Billing** — Auto-generate invoice, mark paid/unpaid/cancel, upload bukti bayar
-- **WhatsApp Reminder** — Tombol kirim reminder H-7/H-3/H-1/expired via wa.me
-- **Auto Suspend** — Scheduler cek expired VPN dan overdue invoice
-- **Server Monitoring** — CPU, RAM, disk usage, uptime, service status
-- **Activity Logs** — Audit trail semua aktivitas admin
-- **Settings** — Business info, payment, WireGuard server config, WhatsApp templates
-- **Backup** — Backup database manual, download, delete
-- **Admin Users** — Role Owner dan Admin
-- **Dark/Light Mode** — Toggle dark mode dengan persist ke localStorage
-- **Responsive** — Mobile-friendly dengan collapsible sidebar
+Project ini sangat cocok untuk penyedia layanan internet (ISP), cloud kecil, reseller VPN, hosting provider, atau bisnis UMKM yang ingin memiliki panel administrasi mandiri yang terintegrasi.
 
-## Tech Stack
+---
 
-- PHP 8.3 + Laravel 13
-- SQLite (default) / MySQL
-- Tailwind CSS 4 + Vite
-- Alpine.js
-- SimpleSoftwareIO/SimpleQrCode
+## 🚀 Fitur Utama
 
-## Instalasi
+### 🖥️ Panel Utama
+* **Dashboard Admin:** Ringkasan data bisnis, statistik order, dan invoice secara real-time.
+* **Client Portal:** Halaman khusus pelanggan untuk mengelola layanan, tiket, dan tagihan mereka.
+* **Settings Panel:** Pengaturan konfigurasi aplikasi dan sistem dalam satu tempat.
+* **Full Backup Panel:** Fitur cadangan data untuk keamanan sistem.
 
-```bash
-# Clone repository
-git clone https://github.com/erlanggaa1/netaccess-panel.git
-cd netaccess-panel
+### 👥 Manajemen Pengguna & Dukungan
+* **Manajemen Customer & Admin:** Pengelolaan hak akses (`Owner`, `Admin`) dan data pelanggan.
+* **Support Ticket:** Sistem tiket bantuan untuk menangani keluhan atau pertanyaan pelanggan.
 
-# Install dependencies
-composer install
-npm install && npm run build
+### 📦 Layanan & Integrasi
+* **Manajemen Paket Layanan:** Kustomisasi produk yang ditawarkan.
+* **VPN/L2TP MikroTik:** Integrasi langsung dengan API MikroTik untuk manajemen user.
+* **Hosting & VPS:** Integrasi dengan WHM / cPanel API serta manajemen *VPS service*.
 
-# Setup environment
-cp .env.example .env
-php artisan key:generate
+### 💳 Transaksi & Billing
+* **Manajemen Order & Invoice:** Otomatisasi pembuatan tagihan dan pelacakan status order.
+* **Sistem Pembayaran:** Upload bukti pembayaran oleh pelanggan, konfirmasi manual, dan approval pembayaran oleh admin.
 
-# Buat database SQLite
-touch database/database.sqlite
+---
 
-# Jalankan migrasi dan seeder
-php artisan migrate --seed
+## 🛠️ Teknologi yang Digunakan
 
-# Buat symlink storage
-php artisan storage:link
+* **Backend:** PHP 8.2+ & Laravel
+* **Database:** MySQL / MariaDB
+* **Frontend:** Blade Template, Tailwind CSS, Vite
+* **Package Manager:** Composer & NPM (Node.js 20+)
+* **Integrasi API:** MikroTik API & WHM / cPanel API
 
-# Jalankan server
-php artisan serve
-```
+---
 
-Buka http://localhost:8000
+## 🖥️ Spesifikasi & Dukungan OS
 
-## Login Default
+### Lingkungan Sistem
 
-- **Email:** `admin@netaccess.local`
-- **Password:** `password`
-- **Role:** Owner (full access)
+| Kategori | Lingkungan | Detail OS / Aplikasi |
+| :--- | :--- | :--- |
+| **Production** | Rekomendasi Utama | Ubuntu Server 22.04 LTS / 24.04 LTS |
+| | Didukung Juga | Debian 12, AlmaLinux 9, Rocky Linux 9 |
+| **Local Dev** | Sistem Operasi | Windows 10/11, Linux, macOS |
+| | Tool Windows | Laragon, XAMPP, WSL Ubuntu, Docker |
 
-## Menggunakan MySQL
+### Kebutuhan Server (System Requirements)
 
-Edit `.env`:
+* **Minimal:** CPU 1 Core, RAM 1 GB, Storage 10 GB (OS: Ubuntu 22.04 / 24.04)
+* **Rekomendasi:** CPU 2 Core, RAM 2 GB atau lebih, Storage 20 GB atau lebih (OS: Ubuntu 22.04 / 24.04)
 
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=netaccess_panel
-DB_USERNAME=root
-DB_PASSWORD=your_password
-```
+### Prasyarat Software & Ekstensi PHP
+Pastikan software berikut sudah terpasang: `PHP 8.2+`, `Composer`, `MySQL/MariaDB`, `Node.js 20+ & NPM`, `Git`, `Nginx / Apache`.
 
-## Scheduler (Auto Suspend)
-
-Tambahkan cron job:
-
-```bash
-* * * * * cd /path-to-project && php artisan schedule:run >> /dev/null 2>&1
-```
-
-Command yang tersedia:
-- `php artisan vpn:check-expired` — Cek dan suspend VPN expired
-- `php artisan invoice:check-overdue` — Update invoice overdue
-- `php artisan panel:backup` — Backup database
-
-## Menghubungkan WireGuard Server
-
-1. Install WireGuard di server: `apt install wireguard`
-2. Generate server keys: `wg genkey | tee server_private.key | wg pubkey > server_public.key`
-3. Masukkan server public key dan private key di halaman **Settings → WireGuard Server**
-4. Set endpoint ke IP publik server
-5. Pastikan user web server bisa menjalankan `wg` command (sudoers)
-
-Contoh sudoers:
-```
-www-data ALL=(ALL) NOPASSWD: /usr/bin/wg, /usr/bin/wg-quick
-```
-
-## Struktur Folder
-
-```
-app/
-├── Console/Commands/     # CheckExpiredVpn, CheckOverdueInvoice, PanelBackup
-├── Http/Controllers/     # Auth, Dashboard, Customer, Package, VpnUser, Invoice, dll.
-├── Http/Middleware/       # RoleMiddleware
-├── Models/               # Customer, Package, VpnUser, Invoice, Setting, dll.
-├── Services/             # WireGuardService, ServerMonitorService
-database/
-├── migrations/           # 9 migration files
-├── seeders/              # Admin, Package, Setting seeders
-resources/views/
-├── layouts/app.blade.php # Main layout dengan sidebar
-├── auth/                 # Login, change password
-├── customers/            # Index, show, create, edit
-├── packages/             # Index, create, edit
-├── vpn-users/            # Index, show, create
-├── invoices/             # Index, show, create
-├── server-status/        # Server monitoring
-├── activity-logs/        # Activity log viewer
-├── settings/             # Settings form
-├── backups/              # Backup management
-├── admin-users/          # Admin user management
-├── components/           # nav-link, status-badge
-└── dashboard.blade.php   # Dashboard
-```
-
-## License
-
-MIT
+Ekstensi PHP yang wajib aktif:
+```text
+php-cli, php-fpm, php-mysql, php-mbstring, php-xml, php-curl, php-zip, php-bcmath, php-gd, php-tokenizer, php-fileinfo, php-opcache
