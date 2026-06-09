@@ -183,8 +183,8 @@ Aplikasi dapat diakses melalui: http://IP-SERVER-ANDA:8000
 ### 🔐 Informasi Login Default
 Setelah proses instalasi dan seeder berhasil dijalankan, Anda dapat masuk menggunakan akun default berikut:
 
-Email: admin@netaccess.local
-Password: password
-Role: Owner / Admin
+- Email: admin@netaccess.local
+- Password: password
+- Role: Owner / Admin
 
 ⚠️ PENTING: Demi keamanan, segera ubah password default Anda atau buat akun admin baru setelah berhasil masuk ke sistem untuk pertama kalinya.
