@@ -82,7 +82,7 @@ sudo apt install -y git curl unzip zip software-properties-common
 sudo apt install -y php php-cli php-fpm php-mysql php-mbstring php-xml php-curl php-zip php-bcmath php-gd php-tokenizer php-fileinfo php-opcache
 
 # Install Composer
-curl -sS [https://getcomposer.org/installer](https://getcomposer.org/installer) | php
+curl -sS https://getcomposer.org/installer https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 
@@ -104,14 +104,14 @@ EXIT;
 
 ### 4. Install Node.js 20
 ```bash
-curl -fsSL [https://deb.nodesource.com/setup_20.x](https://deb.nodesource.com/setup_20.\x) | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x https://deb.nodesource.com/setup_20.\x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
 ### 5. Clone Repository & Install Dependency
 ```bash
 cd /var/www
-sudo git clone [https://github.com/aidilandriandas/Netaccess-Panel.git](https://github.com/aidilandriandas/Netaccess-Panel.git)
+sudo git clone https://github.com/aidilandriandas/Netaccess-Panel.git https://github.com/aidilandriandas/Netaccess-Panel.git
 sudo chown -R $USER:$USER Netaccess-Panel
 cd Netaccess-Panel
 
